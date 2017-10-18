@@ -99,6 +99,13 @@ public class Main {
         Task10.arrayPrinting(array10);
         Task10.maxCount(array10);
 
+        //Задание 11
+        System.out.println();
+        System.out.println("~~~TASK11~~~");
+
+        Task11.arrayInitiaize();
+        Task11.arrayPrinting();
+
 
     }
 }
