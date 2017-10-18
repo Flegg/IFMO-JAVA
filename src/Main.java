@@ -38,6 +38,43 @@ public class Main {
         Task4.change(array4);
         Task4.arrayPrinting(array4);
 
+        //Задание 5
+        System.out.println();
+        System.out.println("~~~TASK5~~~");
+
+        int[] firstArray = new int[5];
+        int[] secondArray = new int[5];
+        Task5.arrayInitiaize(firstArray);
+        Task5.arrayInitiaize(secondArray);
+        Task5.arrayPrinting(firstArray);
+        Task5.arrayPrinting(secondArray);
+        Task5.average(firstArray, secondArray);
+
+        //Задание 6
+        System.out.println();
+        System.out.println("~~~TASK6~~~");
+
+        int[] array6 = new int[4];
+        Task6.arrayInitiaize(array6);
+        Task6.arrayPrinting(array6);
+        Task6.isProgressive(array6);
+
+        //Задание 7
+        System.out.println();
+        System.out.println("~~~TASK7~~~");
+
+        int[] array7 = new int[20];
+        Task7.arrayInitiaize(array7);
+        Task7.arrayPrinting(array7);
+
+        //Задание 8
+        System.out.println();
+        System.out.println("~~~TASK8~~~");
+
+        int[] array8 = new int[12];
+        Task8.arrayInitiaize(array8);
+        Task8.arrayPrinting(array8);
+        Task8.maxInArray(array8);
 
     }
 }
