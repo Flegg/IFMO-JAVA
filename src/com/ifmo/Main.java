@@ -1,4 +1,6 @@
-import StringsArrays.*;
+package com.ifmo;
+
+import com.ifmo.Arrays.*;
 
 public class Main {
     public static void main(String[] args) {

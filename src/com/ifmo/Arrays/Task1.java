@@ -1,4 +1,4 @@
-package StringsArrays;
+package com.ifmo.Arrays;
 
 public class Task1 {
     private static final int MAX = 20;
