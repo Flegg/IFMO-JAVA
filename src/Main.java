@@ -76,5 +76,29 @@ public class Main {
         Task8.arrayPrinting(array8);
         Task8.maxInArray(array8);
 
+        //Задание 9
+        System.out.println();
+        System.out.println("~~~TASK9~~~");
+
+        int[] array9First = new int[10];
+        int[] array9Second = new int[10];
+        Task9.arrayInitiaize(array9First);
+        Task9.arrayInitiaize(array9Second);
+        Task9.thirdArrayCreation(array9First, array9Second);
+        Task9.arrayPrinting(array9First);
+        Task9.arrayPrinting(array9Second);
+        Task9.arrayPrinting(Task9.thirdArray);
+        Task9.wholeNumbers(Task9.thirdArray);
+
+        //Задание 10
+        System.out.println();
+        System.out.println("~~~TASK10~~~");
+
+        int[] array10 = new int[11];
+        Task10.arrayInitiaize(array10);
+        Task10.arrayPrinting(array10);
+        Task10.maxCount(array10);
+
+
     }
 }
