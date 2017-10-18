@@ -28,6 +28,16 @@ public class Main {
         Task3.arrayPrinting(array3);
         Task3.countOfEvenMum(array3);
 
+        //Задание 4
+        System.out.println();
+        System.out.println("~~~TASK4~~~");
+
+        int[] array4 = new int[8];
+        Task4.arrayInitiaize(array4);
+        Task4.arrayPrinting(array4);
+        Task4.change(array4);
+        Task4.arrayPrinting(array4);
+
 
     }
 }
