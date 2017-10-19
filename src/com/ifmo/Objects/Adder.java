@@ -15,12 +15,4 @@ public class Adder {
     public int getValue() {
         return value;
     }
-
-    public static void main(String[] args) {
-        Adder adder = new Adder(10);
-        System.out.println(adder.getValue());
-        adder.add();
-        System.out.println(adder.getValue());
-
-    }
 }
