@@ -1,6 +1,8 @@
 package com.ifmo;
 
 import com.ifmo.Arrays.*;
+import com.ifmo.Objects.Adder;
+import com.ifmo.Objects.List.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -107,6 +109,32 @@ public class Main {
 
         Task11.arrayInitiaize();
         Task11.arrayPrinting();
+
+
+        //Объекты
+
+        //Adder
+        Adder adder = new Adder(10);
+        System.out.println(adder.getValue());
+        adder.add();
+        System.out.println(adder.getValue());
+
+        // List
+        List list = new List();
+        list.add(1);
+        list.add(3);
+        list.add(4);
+        list.add(1);
+        list.add(5);
+        list.add(6);
+        list.add(17);
+
+        list.printList();
+        System.out.println("~~~~~");
+        list.delete(1);
+        list.printList();
+        list.delete(17);
+        list.printList();
 
 
     }
