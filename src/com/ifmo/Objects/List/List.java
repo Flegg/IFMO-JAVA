@@ -21,7 +21,7 @@ public class List {
     public void printList() {
         ListElement i = head;
         while (i != null) {
-            System.out.println(i.getData() + " ");
+            System.out.print(i.getData() + " ");
             i = i.getNext();
         }
     }
