@@ -1,31 +1,23 @@
 package com.ifmo.Objects.Shape;
 
-public class Rectangle {
-    private Point x1;
-    private Point x2;
-    private Point y1;
-    private Point y2;
+public class Rectangle extends Shape {
 
-    public Rectangle(Point x1, Point x2, Point y1) {
-        this.x1 = x1;
-        this.x2 = x2;
-        this.y1 = y1;
-        this.y2 = new Point(x2.getX(), y1.getY());
+    CoordinateOfPoint x1;
+    CoordinateOfPoint y1;
+
+    public Rectangle(CoordinateOfPoint a, CoordinateOfPoint c) {
+        super(a, c);
+        this.x1 = new CoordinateOfPoint(a.getY(), c.getX());
+        this.y1 = new CoordinateOfPoint(a.getX(), c.getY());
     }
 
-    public void square() {
-        double a = Math.sqrt(Math.pow((x2.getX() - x1.getX()), 2) + Math.pow((x2.getY() - x1.getY()), 2));
-        double b = Math.sqrt(Math.pow((y1.getX() - x1.getX()), 2) + Math.pow((y1.getY() - x1.getY()), 2));
-        double square = a * b;
-
-        System.out.printf("Площадь прямоугольника = %.3f\n", square);
+    @Override
+    double perimeter() {
+        return 2 * (length(centerPoint, y1) + length(centerPoint, x1));
     }
 
-    public void perimetr() {
-        double a = Math.sqrt(Math.pow((x2.getX() - x1.getX()), 2) + Math.pow((x2.getY() - x1.getY()), 2));
-        double b = Math.sqrt(Math.pow((y1.getX() - x1.getX()), 2) + Math.pow((y1.getY() - x1.getY()), 2));
-        double perimetr = 2 * (a + b);
-
-        System.out.printf("Площадь прямоугольника = %.3f\n", perimetr);
+    @Override
+    double area() {
+        return length(centerPoint, y1) * length(centerPoint, x1);
     }
 }

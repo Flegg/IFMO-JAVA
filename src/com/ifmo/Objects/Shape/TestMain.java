@@ -2,17 +2,32 @@ package com.ifmo.Objects.Shape;
 
 public class TestMain {
     public static void main(String[] args) {
-        Circle circle = new Circle(new Point(0,0), new Point(0, 4));
 
-        circle.square();
-        circle.perimetr();
+        Ellipse ellipse = new Ellipse(new CoordinateOfPoint(0, 0), new CoordinateOfPoint(2),
+                new CoordinateOfPoint(4));
 
-        Rectangle rectangle = new Rectangle(new Point(0, 0), new Point(4, 0), new Point(0, 6));
-        rectangle.square();
-        rectangle.perimetr();
+        System.out.println("Площадь эллипса = " + ellipse.area());
+        System.out.println("Периметр эллипса = " + ellipse.perimeter());
 
-        Triangle triangle = new Triangle(new Point(0,0), new Point(0, 4), new Point(2, 10));
-        triangle.square();
-        triangle.perimetr();
+        Rectangle rectangle = new Rectangle(new CoordinateOfPoint(0, 0), new CoordinateOfPoint(8,2));
+        System.out.println("Периметр прямоугольника = " + rectangle.perimeter());
+        System.out.println("Площадь прямоугольника = " + rectangle.area());
+
+        Triangle triangle = new Triangle(new CoordinateOfPoint(0, 0), new CoordinateOfPoint(0, 0),
+                new CoordinateOfPoint(4, 0));
+
+        System.out.println("Площадь треугольника = " + triangle.area());
+        System.out.println("Периметр треугольника = " + triangle.perimeter());
+
+        Circle circle = new Circle(new CoordinateOfPoint(0, 0), new CoordinateOfPoint(0, 4));
+
+        System.out.println("Площадь круга = " + circle.area());
+        System.out.println("Периметр круга = " + circle.perimeter());
+
+        Square square = new Square(new CoordinateOfPoint(0, 0), new CoordinateOfPoint(5, 0));
+
+        System.out.println("Площадь квадрата = " + square.area());
+        System.out.println("Периметр квадрата = " + square.perimeter());
+
     }
 }

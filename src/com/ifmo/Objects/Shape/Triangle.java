@@ -1,57 +1,58 @@
 package com.ifmo.Objects.Shape;
 
-public class Triangle {
-    private Point a;
-    private Point b;
-    private Point c;
+public class Triangle extends Shape {
+    CoordinateOfPoint c;
 
+    private boolean isExist;
     private double ab;
     private double ac;
     private double bc;
 
-    private boolean isExist;
-
-    public Triangle(Point a, Point b, Point c) {
-        this.a = a;
-        this.b = b;
+    public Triangle(CoordinateOfPoint a, CoordinateOfPoint b, CoordinateOfPoint c) {
+        super(a, b);
         this.c = c;
     }
 
     private void sideCalculation() {
-        ab = Math.sqrt(Math.pow(b.getX() - a.getX(), 2) + Math.pow(b.getY() - a.getY(), 2));
-        ac = Math.sqrt(Math.pow(c.getX() - a.getX(), 2) + Math.pow(c.getY() - a.getY(), 2));
-        bc = Math.sqrt(Math.pow(c.getX() - b.getX(), 2) + Math.pow(c.getY() - b.getY(), 2));
-        System.out.println(ab + " " + ac + " " + bc);
+        ab = length(centerPoint, otherPoint);
+        ac = length(centerPoint, c);
+        bc = length(otherPoint, c);
     }
 
     private boolean isExist() {
         sideCalculation();
-        if (ab + bc > ac | ab + ac > bc | ac + bc > ab)
-            isExist = true;
+        if (ab > 0 && ac > 0 && bc > 0) {
+            if (ab + bc > ac | ab + ac > bc | ac + bc > ab)
+                isExist = true;
+        }
         else
             isExist = false;
 
         return isExist;
     }
 
-    public void square() {
+    @Override
+    double area() {
         isExist();
         if (isExist) {
             double p = (ab + ac + bc) / 2;
-            double square = Math.sqrt(p * (p - ac) * (p - ab) * (p - bc));
-            System.out.printf("Площадь треугольника = %.03f\n", square);
+            return Math.sqrt(p * (p - ac) * (p - ab) * (p - bc));
         }
-        else
+        else {
             System.out.println("Треугольник не существует!");
+            return 0;
+        }
     }
 
-    public void perimetr() {
+    @Override
+    double perimeter() {
         isExist();
         if (isExist) {
-            double p = ab + ac + bc;
-            System.out.printf("Периметр треугольника = %.03f\n", p);
+            return ab + ac + bc;
         }
-        else
+        else {
             System.out.println("Треугольник не существует!");
+            return 0;
+        }
     }
 }
