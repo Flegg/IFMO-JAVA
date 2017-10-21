@@ -1,8 +1,9 @@
 package com.ifmo;
 
 import com.ifmo.Arrays.*;
+import com.ifmo.Objects.Accumulator.*;
 import com.ifmo.Objects.Adder;
-import com.ifmo.Objects.List.List;
+import com.ifmo.Objects.List.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -135,6 +136,14 @@ public class Main {
         list.printList();
         list.delete(17);
         list.printList();
+
+        //Accumulator
+
+        System.out.println();
+        System.out.println("~~~Accumulator~~~");
+        Accumulator acc = new Accumulator(2, new Power());
+        acc.accumulate(3);
+        System.out.println(acc.getValue());
 
 
     }
