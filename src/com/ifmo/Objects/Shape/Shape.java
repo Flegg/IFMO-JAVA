@@ -1,16 +1,16 @@
 package com.ifmo.Objects.Shape;
 
-public class Shape {
+abstract class Shape {
 
     CoordinateOfPoint centerPoint;
     CoordinateOfPoint otherPoint;
 
-    public Shape(CoordinateOfPoint centerPoint, CoordinateOfPoint otherPoint) {
+    Shape(CoordinateOfPoint centerPoint, CoordinateOfPoint otherPoint) {
         this.centerPoint = centerPoint;
         this.otherPoint = otherPoint;
     }
 
-    public Shape(CoordinateOfPoint centerPoint) {
+    Shape(CoordinateOfPoint centerPoint) {
         this.centerPoint = centerPoint;
     }
 
@@ -18,12 +18,7 @@ public class Shape {
         return Math.sqrt(Math.pow(b.getX() - a.getX(), 2) + Math.pow(b.getY() - a.getY(), 2));
     }
 
-    double perimeter() {
-        return 0;
-    }
-
-    double area() {
-        return 0;
-    }
+    abstract double perimeter();
+    abstract double area() ;
 
 }

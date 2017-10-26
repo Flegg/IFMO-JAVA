@@ -1,14 +1,14 @@
 package com.ifmo.Objects.Shape;
 
-public class Triangle extends Shape {
-    CoordinateOfPoint c;
+class Triangle extends Shape {
+    private CoordinateOfPoint c;
 
     private boolean isExist;
     private double ab;
     private double ac;
     private double bc;
 
-    public Triangle(CoordinateOfPoint a, CoordinateOfPoint b, CoordinateOfPoint c) {
+    Triangle(CoordinateOfPoint a, CoordinateOfPoint b, CoordinateOfPoint c) {
         super(a, b);
         this.c = c;
     }
@@ -33,8 +33,8 @@ public class Triangle extends Shape {
 
     @Override
     double area() {
-        isExist();
-        if (isExist) {
+
+        if (isExist()) {
             double p = (ab + ac + bc) / 2;
             return Math.sqrt(p * (p - ac) * (p - ab) * (p - bc));
         }

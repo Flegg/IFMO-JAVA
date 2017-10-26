@@ -1,11 +1,11 @@
 package com.ifmo.Objects.Shape;
 
-public class Rectangle extends Shape {
+class Rectangle extends Shape {
 
-    CoordinateOfPoint x1;
-    CoordinateOfPoint y1;
+    private CoordinateOfPoint x1;
+    private CoordinateOfPoint y1;
 
-    public Rectangle(CoordinateOfPoint a, CoordinateOfPoint c) {
+    Rectangle(CoordinateOfPoint a, CoordinateOfPoint c) {
         super(a, c);
         this.x1 = new CoordinateOfPoint(a.getY(), c.getX());
         this.y1 = new CoordinateOfPoint(a.getX(), c.getY());

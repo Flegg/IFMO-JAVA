@@ -1,11 +1,11 @@
 package com.ifmo.Objects.Shape;
 
-public class Ellipse extends Shape {
+ class Ellipse extends Shape {
 
-    CoordinateOfPoint smallRadius;
-    CoordinateOfPoint bigRadius;
+    private CoordinateOfPoint smallRadius;
+    private CoordinateOfPoint bigRadius;
 
-    public Ellipse(CoordinateOfPoint centerPoint, CoordinateOfPoint smallRadius, CoordinateOfPoint bigRadius) {
+     Ellipse(CoordinateOfPoint centerPoint, CoordinateOfPoint smallRadius, CoordinateOfPoint bigRadius) {
         super(centerPoint);
         this.smallRadius = new CoordinateOfPoint(centerPoint.getX(), smallRadius.getX());
         this.bigRadius = new CoordinateOfPoint(bigRadius.getX(), centerPoint.getY());

@@ -1,9 +1,9 @@
 package com.ifmo.Objects.Shape;
 
 
-public class Circle extends Shape {
+class Circle extends Shape {
 
-    public Circle (CoordinateOfPoint c, CoordinateOfPoint o) {
+    Circle (CoordinateOfPoint c, CoordinateOfPoint o) {
         super(c, o);
     }
 

@@ -1,8 +1,8 @@
 package com.ifmo.Objects.Shape;
 
-public class Square extends Rectangle {
+class Square extends Rectangle {
 
-    public Square(CoordinateOfPoint a, CoordinateOfPoint c) {
+    Square(CoordinateOfPoint a, CoordinateOfPoint c) {
         super(a, c);
     }
 
