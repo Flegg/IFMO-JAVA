@@ -2,9 +2,9 @@ package com.ifmo.Objects.Library;
 
 public class Library {
 
-    Shelf[] shelves = new Shelf[100];
+    Shelf[] shelves = new Shelf[5];
 
-    private boolean isAdded(int index, Book book, int quantity) {
+    private boolean add(int index, Book book, int quantity) {
         boolean result = false;
         if (shelves[index] == null) {
             shelves[index] = new Shelf(book, quantity);
@@ -20,21 +20,21 @@ public class Library {
         return result;
     }
 
-    public void put(Book book, int quantity) {
+    void put(Book book, int quantity) {
         boolean isAdded = false;
 
         int x = Math.abs(book.hashCode() % shelves.length);
 
         for (int i = x; i < shelves.length; i++) {
-            if (isAdded(i, book, quantity)) {
+            if (add(i, book, quantity)) {
                 isAdded = true;
                 break;
             }
         }
 
         if (! isAdded) {
-            for (int i = quantity; i >= 0; i--) {
-                if (isAdded(i, book, quantity)) {
+            for (int i = x; i >= 0; i--) {
+                if (add(i, book, quantity)) {
                     isAdded = true;
                     break;
                 }
@@ -42,7 +42,7 @@ public class Library {
         }
 
         if (! isAdded)
-            System.out.println("Библиотека полна");
+            System.out.println(book + " не добавить, т.к. Библиотека полна");
     }
 
     public void get(Book book, int quantity) {
