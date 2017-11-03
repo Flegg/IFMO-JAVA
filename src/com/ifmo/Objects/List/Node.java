@@ -1,10 +1,10 @@
 package com.ifmo.Objects.List;
 
-class Node {
-     Object value;
-     Node next;
+class Node<T> {
+     T value;
+     Node<T> next;
 
-    Node(Object value) {
+    Node(T value) {
         this.value = value;
     }
 }

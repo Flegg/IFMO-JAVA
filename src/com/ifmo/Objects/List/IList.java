@@ -1,8 +1,8 @@
 package com.ifmo.Objects.List;
 
-public interface IList extends Iterable {
-    void add(Object o);
-    Object get(int index);
-    Object remove(int index);
+public interface IList<T> extends Iterable<T> {
+    void add(T o);
+    T get(int index);
+    T remove(int index);
 
 }

@@ -2,12 +2,12 @@ package com.ifmo.Objects.List;
 
 import java.util.Iterator;
 
-public class LinkedList implements IList {
-    private Node head;
-    private Node last;
+public class LinkedList<T> implements IList<T> {
+    private Node<T> head;
+    private Node<T> last;
 
-    public void add(Object value) {
-        Node tmp = new Node(value);
+    public void add(T value) {
+        Node<T> tmp = new Node<>(value);
         if (head ==null) {
             head = tmp;
             last = tmp;
@@ -19,19 +19,19 @@ public class LinkedList implements IList {
     }
 
     @Override
-    public Object remove(int index) {
+    public T remove(int index) {
         if (head == null)
             return null;
 
         if (index == 0) {
-            Object o = head.value;
+            T o = head.value;
             head = head.next;
             return o;
         }
 
-        Node previos = search(index - 1);
+        Node<T> previos = search(index - 1);
         if (previos != null) {
-            Node current = previos.next;
+            Node<T> current = previos.next;
 
             if (current != null) {
                 previos.next = previos.next.next;
@@ -42,21 +42,21 @@ public class LinkedList implements IList {
     }
 
     @Override
-    public Object get(int index) {
-        Node node = search(index);
+    public T get(int index) {
+        Node<T> node = search(index);
         if (node != null)
             return node.value;
         return null;
     }
 
-    private Node search(int index) {
+    private Node<T> search(int index) {
         if (index == 0) {
             return head;
         }
 
         int cnt = 0;
 
-        Node node = head;
+        Node<T> node = head;
 
         while (node != null) {
             if (cnt++ == index) {
@@ -68,14 +68,14 @@ public class LinkedList implements IList {
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         return new LinkedListIterator(head);
     }
 
-    private static class LinkedListIterator implements Iterator {
-        private Node next;
+    private class LinkedListIterator implements Iterator<T> {
+        private Node<T> next;
 
-        private LinkedListIterator(Node next) {
+        private LinkedListIterator(Node<T> next) {
             this.next = next;
         }
 
@@ -88,8 +88,8 @@ public class LinkedList implements IList {
         }
 
         @Override
-        public Object next() {
-            Object o = next.value;
+        public T next() {
+            T o = next.value;
             next = next.next;
             return o;
         }
