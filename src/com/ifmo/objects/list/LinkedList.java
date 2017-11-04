@@ -1,10 +1,14 @@
 package com.ifmo.objects.list;
 
+import com.ifmo.objects.interfaces.IList;
+import com.ifmo.objects.interfaces.IStack;
+
 import java.util.Iterator;
 
-public class LinkedList<T> implements IList<T> {
+public class LinkedList<T> implements IList<T>, IStack<T> {
     private Node<T> head;
     private Node<T> last;
+    private int size;
 
     public void add(T value) {
         Node<T> tmp = new Node<>(value);
@@ -16,6 +20,7 @@ public class LinkedList<T> implements IList<T> {
             last.next = tmp;
             last = tmp;
         }
+        size++;
     }
 
     @Override
@@ -26,16 +31,25 @@ public class LinkedList<T> implements IList<T> {
         if (index == 0) {
             T o = head.value;
             head = head.next;
+            size--;
             return o;
         }
 
-        Node<T> previos = search(index - 1);
-        if (previos != null) {
-            Node<T> current = previos.next;
+        Node<T> previous = search(index - 1);
+        if (previous != null) {
+            Node<T> current = previous.next;
 
             if (current != null) {
-                previos.next = previos.next.next;
-                return current.value;
+                if (current.equals(last)) {
+                    previous.next = current.next;
+                    last = previous;
+                    size--;
+                }
+                else {
+                    previous.next = current.next;
+                    size--;
+                    return current.value;
+                }
             }
         }
         return null;
@@ -68,6 +82,27 @@ public class LinkedList<T> implements IList<T> {
     }
 
     @Override
+    public void push(T val) {
+        add(val);
+    }
+
+    @Override
+    public T pop() {
+        return remove(size - 1);
+    }
+
+    @Override
+    public void peek() {
+        if (head == null) {
+            System.out.println("Тут ничего нет");
+        }
+        else {
+            Node<T> tmp = search(size - 1);
+            System.out.println(tmp != null ? tmp.value : "NULL");
+        }
+    }
+
+    @Override
     public Iterator<T> iterator() {
         return new LinkedListIterator(head);
     }
@@ -81,11 +116,6 @@ public class LinkedList<T> implements IList<T> {
 
         @Override
         public boolean hasNext() {
-//            if (next != null)
-//                return true;
-//            else
-//                return false;
-
             return next != null;
         }
 
