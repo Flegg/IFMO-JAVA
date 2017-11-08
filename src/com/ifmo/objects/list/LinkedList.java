@@ -1,11 +1,12 @@
 package com.ifmo.objects.list;
 
 import com.ifmo.objects.interfaces.IList;
+import com.ifmo.objects.interfaces.IQueue;
 import com.ifmo.objects.interfaces.IStack;
 
 import java.util.Iterator;
 
-public class LinkedList<T> implements IList<T>, IStack<T> {
+public class LinkedList<T> implements IList<T>, IStack<T>, IQueue<T> {
     private Node<T> head;
     private Node<T> last;
     private int size;
@@ -100,6 +101,36 @@ public class LinkedList<T> implements IList<T>, IStack<T> {
             Node<T> tmp = search(size - 1);
             System.out.println(tmp != null ? tmp.value : "NULL");
         }
+    }
+
+    @Override
+    public T poll() {
+        return remove(0);
+    }
+
+    @Override
+    public void offer(T val) {
+        add(val);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LinkedList<?> that = (LinkedList<?>) o;
+
+        if (size != that.size) return false;
+        if (head != null ? !head.equals(that.head) : that.head != null) return false;
+        return last != null ? last.equals(that.last) : that.last == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = head != null ? head.hashCode() : 0;
+        result = 31 * result + (last != null ? last.hashCode() : 0);
+        result = 31 * result + size;
+        return result;
     }
 
     @Override
