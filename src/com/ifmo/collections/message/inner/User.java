@@ -1,4 +1,4 @@
-package com.ifmo.collections.inner;
+package com.ifmo.collections.message.inner;
 
 /**
  * Created by xmitya on 20.10.16.

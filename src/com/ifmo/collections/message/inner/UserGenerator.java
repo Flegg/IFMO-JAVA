@@ -1,4 +1,4 @@
-package com.ifmo.collections.inner;
+package com.ifmo.collections.message.inner;
 
 import java.util.*;
 

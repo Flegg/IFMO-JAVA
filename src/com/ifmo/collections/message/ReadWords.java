@@ -1,4 +1,4 @@
-package com.ifmo.collections;
+package com.ifmo.collections.message;
 
 import java.io.File;
 import java.io.IOException;

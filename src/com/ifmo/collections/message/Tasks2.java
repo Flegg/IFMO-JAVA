@@ -1,15 +1,15 @@
-package com.ifmo.collections;
+package com.ifmo.collections.message;
 
-import com.ifmo.collections.inner.Message;
-import com.ifmo.collections.inner.MessagePriority;
-import com.ifmo.collections.inner.User;
+import com.ifmo.collections.message.inner.Message;
+import com.ifmo.collections.message.inner.MessagePriority;
+import com.ifmo.collections.message.inner.User;
 
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NavigableSet;
 
-import static com.ifmo.collections.inner.UserGenerator.generate;
+import static com.ifmo.collections.message.inner.UserGenerator.generate;
 
 /**
  * Created by xmitya on 20.10.16.

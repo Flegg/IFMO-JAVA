@@ -1,4 +1,4 @@
-package com.ifmo.collections;
+package com.ifmo.collections.message;
 
 import java.util.ArrayList;
 import java.util.List;
