@@ -3,10 +3,7 @@ package com.ifmo.collections.wap;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Words {
 
@@ -15,7 +12,7 @@ public class Words {
         return Files.readAllLines(file.toPath());
     }
 
-    private static void readWords() throws IOException {
+    private static List<String> readWords() throws IOException {
 
         List<String> lines = readFile();
         List<String> words = new ArrayList<>();
@@ -35,15 +32,53 @@ public class Words {
 //        for (String word : words) {
 //            System.out.println(word);
 //        }
+        return words;
     }
 
-//    public static List<Map.Entry<String, Integer>> uniqueWords() throws IOException {
-//        Map<String, Integer> uniqueWords = new HashMap<>();
-//        List<String> lines = readFile();
-//    }
+    static List<Map.Entry<String, Integer>> uniqueWords(List<String> lst, int minWordLength) throws IOException {
+        Map<String, Integer> uniqueWords = new HashMap<>();
+        List<String> words = lst;
 
-//    public static void main(String[] args) throws IOException {
-//        readWords();
-//    }
+        for (String word : words) {
+            if (word.length() >= minWordLength) {
+                Integer currentQty = uniqueWords.get(word);
+                if (currentQty == null) {
+                    currentQty = 0;
+                }
+                uniqueWords.put(word, ++currentQty);
+            }
+        }
+        return sort(uniqueWords);
+    }
+
+    static <T1, T2 extends Number & Comparable>List<Map.Entry<T1, T2>> sort(Map<T1, T2> map){
+        List<Map.Entry<T1, T2>> list = new ArrayList<>();
+        list.addAll(map.entrySet());
+//        list.sort((Comparator<? super Map.Entry<String, Integer>>) map.entrySet());
+        Comparator<Map.Entry<T1, T2>> comparator = new Comparator<Map.Entry<T1, T2>>() {
+            @Override
+            public int compare(Map.Entry<T1, T2> o1, Map.Entry<T1, T2> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        };
+        list.sort(comparator);
+        return list;
+    }
+
+    static <T1, T2> void topWords(List<Map.Entry<T1, T2>> list, int quantity) {
+        System.out.println("Top " + quantity + " words:");
+        int i = 0;
+        for (Map.Entry<T1, T2> map : list) {
+            System.out.println(map + ", ");
+            i++;
+            if (i == quantity) {
+                break;
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        topWords(uniqueWords(readWords(), 2), 10);
+    }
 
 }
