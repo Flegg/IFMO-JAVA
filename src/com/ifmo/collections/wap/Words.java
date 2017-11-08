@@ -35,9 +35,9 @@ public class Words {
         return words;
     }
 
-    static List<Map.Entry<String, Integer>> uniqueWords(List<String> lst, int minWordLength) throws IOException {
+    static List<Map.Entry<String, Integer>> uniqueWords(int minWordLength) throws IOException {
         Map<String, Integer> uniqueWords = new HashMap<>();
-        List<String> words = lst;
+        List<String> words = readWords();
 
         for (String word : words) {
             if (word.length() >= minWordLength) {
@@ -51,7 +51,7 @@ public class Words {
         return sort(uniqueWords);
     }
 
-    static <T1, T2 extends Number & Comparable>List<Map.Entry<T1, T2>> sort(Map<T1, T2> map){
+    static <T1, T2 extends Comparable>List<Map.Entry<T1, T2>> sort(Map<T1, T2> map){
         List<Map.Entry<T1, T2>> list = new ArrayList<>();
         list.addAll(map.entrySet());
 //        list.sort((Comparator<? super Map.Entry<String, Integer>>) map.entrySet());
@@ -62,6 +62,7 @@ public class Words {
             }
         };
         list.sort(comparator);
+        Collections.reverse(list);
         return list;
     }
 
@@ -69,7 +70,7 @@ public class Words {
         System.out.println("Top " + quantity + " words:");
         int i = 0;
         for (Map.Entry<T1, T2> map : list) {
-            System.out.println(map + ", ");
+            System.out.println(map);
             i++;
             if (i == quantity) {
                 break;
@@ -78,7 +79,7 @@ public class Words {
     }
 
     public static void main(String[] args) throws IOException {
-        topWords(uniqueWords(readWords(), 2), 10);
+        topWords(uniqueWords(4), 10);
     }
 
 }
