@@ -1,5 +1,6 @@
 package com.ifmo.objects.list;
 
+import com.ifmo.exceptions.MyException;
 import com.ifmo.objects.interfaces.IList;
 import com.ifmo.objects.interfaces.IQueue;
 import com.ifmo.objects.interfaces.IStack;
@@ -10,6 +11,7 @@ public class LinkedList<T> implements IList<T>, IStack<T>, IQueue<T> {
     private Node<T> head;
     private Node<T> last;
     private int size;
+    private int countOfModifications;
 
     public void add(T value) {
         Node<T> tmp = new Node<>(value);
@@ -22,6 +24,7 @@ public class LinkedList<T> implements IList<T>, IStack<T>, IQueue<T> {
             last = tmp;
         }
         size++;
+        countOfModifications++;
     }
 
     @Override
@@ -33,6 +36,7 @@ public class LinkedList<T> implements IList<T>, IStack<T>, IQueue<T> {
             T o = head.value;
             head = head.next;
             size--;
+            countOfModifications++;
             return o;
         }
 
@@ -45,10 +49,12 @@ public class LinkedList<T> implements IList<T>, IStack<T>, IQueue<T> {
                     previous.next = current.next;
                     last = previous;
                     size--;
+                    countOfModifications++;
                 }
                 else {
                     previous.next = current.next;
                     size--;
+                    countOfModifications++;
                     return current.value;
                 }
             }
@@ -58,6 +64,8 @@ public class LinkedList<T> implements IList<T>, IStack<T>, IQueue<T> {
 
     @Override
     public T get(int index) {
+        if(index < 0 || index > size)
+            throw new MyException("Element with this index is not exist");
         Node<T> node = search(index);
         if (node != null)
             return node.value;
@@ -140,6 +148,7 @@ public class LinkedList<T> implements IList<T>, IStack<T>, IQueue<T> {
 
     private class LinkedListIterator implements Iterator<T> {
         private Node<T> next;
+        int i = countOfModifications;
 
         private LinkedListIterator(Node<T> next) {
             this.next = next;
@@ -152,6 +161,8 @@ public class LinkedList<T> implements IList<T>, IStack<T>, IQueue<T> {
 
         @Override
         public T next() {
+            if (i != countOfModifications)
+                throw new MyException("Concurrent Modification Exception");
             T o = next.value;
             next = next.next;
             return o;
